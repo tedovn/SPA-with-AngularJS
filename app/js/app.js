@@ -1,4 +1,4 @@
-var softUniApp = angular.module('softUniApp', ['ngRoute'])
+var softUniApp = angular.module('softUniApp', ['ngResource','ngRoute'])
     .config(function ($routeProvider, $locationProvider) {
 
         $routeProvider.when('/register' , {
@@ -13,6 +13,7 @@ var softUniApp = angular.module('softUniApp', ['ngRoute'])
             controller : 'LoginController'
         });
 
+
         $routeProvider.when('/' , {
             title: 'Ads - Home',
             templateUrl : 'templates/all-ads.html',
@@ -22,4 +23,5 @@ var softUniApp = angular.module('softUniApp', ['ngRoute'])
         $routeProvider.otherwise({
             redirectTo: '/'
         });
-    });
+    })
+    .constant('baseUrl', 'http://localhost:1337/api/');

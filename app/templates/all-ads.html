@@ -1,13 +1,72 @@
 <div class="jumbotron">
     <div class="row">
-        <div class="col-md-3">
-            To publish a new ad, please login.
+        <div class="col-md-2">
+            <div data-ng-include="'templates/layouts/layout.login-register.html'"></div>
         </div>
-        <div class="col-md-6">
-            Ads
+        <div class="col-md-8">
+            <ul id="ul">
+                <li ng-repeat="ad in allAds.ads">
+                    <div class="container well">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h5 class="pull-left"> {{ad.title}} </h5>
+                            </div>
+                            <div class="col-md-5">
+                                <span class="pull-right"> {{ad.date | date: 'd-MMM-yyyy'}} </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="" data-ng-src="{{ad.imageDataUrl | searchResultImg}}" class="resize-img">
+                            </div>
+                            <div class="col-md-8">
+                                <div> {{ad.text}} </div>
+                                {{ad.id}}
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <strong>
+                                            Name: <br />
+                                            Email: <br />
+                                            Phone: <br />
+                                        </strong>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="panel-body">
+                                            {{ad.ownerName}}
+                                        </div>
+                                        <div class="panel-body">
+                                            {{ad.ownerEmail}}
+                                        </div>
+                                        <div class="panel-body">
+                                            {{ad.ownerPhone}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="col-md-3">
-            Filters
+        <div class="col-md-2">
+            <div class="panel panel-primary" data-ng-controller="CategoryController">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categories</h3>
+                </div>
+                <div class="panel-body" ng-repeat="category in categories">
+                    {{category.name}}
+                    {{category.id}}
+                </div>
+            </div>
+            <div class="panel panel-primary" data-ng-controller="TownController">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Towns</h3>
+                </div>
+                <div class="panel-body" ng-repeat="town in towns">
+                    {{town.name}}
+                    {{town.id}}
+                </div>
+            </div>
         </div>
     </div>
 </div>

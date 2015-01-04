@@ -1,6 +1,6 @@
-softUniApp.factory('adsData', function ($http, $q, $log, baseUrl) {
+softUniApp.factory('authData', function ($http, $q, baseUrl) {
 
-    function getAllAds(params) {
+    function login(params) {
         var d = $q.defer();
 
         $http({
@@ -18,11 +18,13 @@ softUniApp.factory('adsData', function ($http, $q, $log, baseUrl) {
         return d.promise;
     }
 
-    function getAllTowns() {
+    function register(params) {
         var d = $q.defer();
+
         $http({
             method: 'GET',
-            url: baseUrl + 'towns/'
+            url: baseUrl + 'ads/',
+            params: params
         })
             .success(function (data, status, headers, config) {
                 d.resolve(data);
@@ -30,28 +32,12 @@ softUniApp.factory('adsData', function ($http, $q, $log, baseUrl) {
             .error(function (data, status, headers, config) {
                 d.reject(data);
             });
+
         return d.promise;
     }
-
-    function getAllCategories() {
-        var d = $q.defer();
-        $http({
-            method: 'GET',
-            url: baseUrl + 'categories/'
-        })
-            .success(function (data, status, headers, config) {
-                d.resolve(data);
-            })
-            .error(function (data, status, headers, config) {
-                d.reject(data);
-            });
-        return d.promise;
-    }
-
 
     return {
-        getAllAds: getAllAds,
-        getAllTowns: getAllTowns,
-        getAllCategories: getAllCategories
+        login: login,
+        register: register
     }
 });
