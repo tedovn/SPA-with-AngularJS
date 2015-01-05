@@ -52,10 +52,11 @@
                                 <input type="password" class="form-control" id="userPhone" placeholder="+359 999 999">
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-5" data-ng-controller="TownController">
                             <label class="control-label">Towns:</label>
                             <select class="form-control" name="townId">
                                 <option value="{{town.id}}" data-ng-repeat="town in towns"> {{town.name}} </option>
+
                             </select>
                         </div>
 

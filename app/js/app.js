@@ -1,10 +1,10 @@
-var softUniApp = angular.module('softUniApp', ['ngResource','ngRoute'])
+var softUniApp = angular.module('softUniApp', ['ngResource','ngRoute', 'ngCookies'])
     .config(function ($routeProvider, $locationProvider) {
 
         $routeProvider.when('/register' , {
             title: 'Ads - Registration',
             templateUrl : 'templates/register.html',
-            controller : 'RegisterController'
+            controller : 'LoginController'
         });
 
         $routeProvider.when('/login' , {

@@ -1,4 +1,4 @@
-softUniApp.factory('authData', function ($http, $q, baseUrl) {
+softUniApp.factory('authData', function ($http, $q, baseUrl, $cookieStore) {
 
     var baseUserUrl = baseUrl + 'user/';
     var headers = {};
