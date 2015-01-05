@@ -26,7 +26,7 @@ var softUniApp = angular.module('softUniApp', ['ngResource','ngRoute', 'ngCookie
            controller: 'AdsController'
         });
 
-        $routeProvider.when('/user/ads/publish', {
+        $routeProvider.when('/user/ads/publish-new-ad', {
             title: 'Ads - Publish New Ad',
             templateUrl: 'templates/user/publish-new-ad.html',
             controller: 'PublishAdController'

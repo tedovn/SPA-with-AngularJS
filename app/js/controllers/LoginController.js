@@ -62,8 +62,7 @@ softUniApp.controller('LoginController', function($scope, $http, $window, authDa
     function logout() {
         var headers = authData.getAuthorizationHeaders();
         authData.logout(headers).then(function(data) {
-            authData.removeAuthorizationHeaders();
-            authData.setLoggedUser(undefined);
+            authData.removeLoggedUser();
             messaging.successMessage(data.message);
             $window.location.href = '#/';
         }, function(err) {

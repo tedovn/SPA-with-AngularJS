@@ -3,13 +3,13 @@ softUniApp.factory('authData', function ($http, $q, baseUrl, $cookieStore) {
     var baseUserUrl = baseUrl + 'user/';
     var headers = {};
 
-    function setAuthorizationHeaders(accessToken){
+    function setAuthorizationHeaders(accessToken) {
         angular.extend(headers, accessToken);
     }
 
     function getLocalUser() {
         var savedUser = $cookieStore.get('UserData');
-        if (savedUser){
+        if (savedUser) {
             return savedUser;
         } else {
             return false;
@@ -22,9 +22,9 @@ softUniApp.factory('authData', function ($http, $q, baseUrl, $cookieStore) {
 
     function getAuthorizationHeaders() {
         var loggedUser = getLocalUser();
-        if(loggedUser) {
+        if (loggedUser) {
             var head = {};
-            head['Authorization'] = 'Bearer' + loggedUser.access_token;
+            head['Authorization'] = 'Bearer ' + loggedUser.access_token;
             setAuthorizationHeaders(head);
         } else {
             var head = {};
@@ -43,8 +43,8 @@ softUniApp.factory('authData', function ($http, $q, baseUrl, $cookieStore) {
         return $cookieStore.get('UserData');
     }
 
-    function setLoggedUser(user){
-        if(!!user){
+    function setLoggedUser(user) {
+        if (!!user) {
             $cookieStore.put('UserData', user);
         }
     }
@@ -85,7 +85,7 @@ softUniApp.factory('authData', function ($http, $q, baseUrl, $cookieStore) {
         return d.promise;
     }
 
-    function logout(user) {
+    function logout(headers) {
         var d = $q.defer();
 
         $http({
@@ -94,11 +94,11 @@ softUniApp.factory('authData', function ($http, $q, baseUrl, $cookieStore) {
             headers: headers,
             data: {}
         })
-            .success(function (data, status, headers, config) {
-                d.resolve(data);
+            .success(function (userLogoutData) {
+                d.resolve(userLogoutData);
             })
-            .error(function (data, status, headers, config) {
-                d.reject(data);
+            .error(function (logoutError) {
+                d.reject(logoutError);
             });
 
         return d.promise;

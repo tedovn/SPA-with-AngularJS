@@ -19,6 +19,12 @@
                 <div class="col-lg-5">
                     <h1 class="navbar navbar-text centered"> {{page.title}} </h1>
                 </div>
+                <div class="col-lg-3" ng-controller="LoginController">
+                    <div class="navbar navbar-text navbar-right" data-ng-if="userData.isLoggedUser()">
+                        <div class="navbar-text"> {{userData.getLoggedUser().username}}</div>
+                        <a href="" data-ng-click="logout()" class="navbar-brand">Logout</a>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -36,6 +42,11 @@
 <script type="text/javascript" src="js/controllers/LoginController.js"></script>
 <script type="text/javascript" src="js/controllers/TownController.js"></script>
 <script type="text/javascript" src="js/controllers/CategoryController.js"></script>
+<script type="text/javascript" src="js/controllers/EditUserProfileController.js"></script>
+<script type="text/javascript" src="js/controllers/PublishAdController.js"></script>
+<script type="text/javascript" src="js/controllers/UserAdsController.js"></script>
+<script type="text/javascript" src="js/controllers/UserDeleteAdController.js"></script>
+<script type="text/javascript" src="js/controllers/UserEditAdController.js"></script>
 <script type="text/javascript" src="js/services/adsData.js"></script>
 <script type="text/javascript" src="js/services/authData.js"></script>
 <script type="text/javascript" src="js/filters/image-filter.js"></script>

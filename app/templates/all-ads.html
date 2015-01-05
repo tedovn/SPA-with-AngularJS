@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2" data-ng-controller="LoginController">
             <div data-ng-if="!userData.isLoggedUser()">
                 <div data-ng-include="'templates/layouts/layout.login-register.html'"></div>
             </div>
