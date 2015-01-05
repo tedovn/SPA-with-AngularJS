@@ -1,12 +1,12 @@
 softUniApp.factory('authData', function ($http, $q, baseUrl) {
 
-    function login(params) {
+    function login(user) {
         var d = $q.defer();
 
         $http({
-            method: 'GET',
-            url: baseUrl + 'ads/',
-            params: params
+            method: 'POST',
+            url: baseUrl + 'user/login/',
+            data: user
         })
             .success(function (data, status, headers, config) {
                 d.resolve(data);
@@ -18,13 +18,13 @@ softUniApp.factory('authData', function ($http, $q, baseUrl) {
         return d.promise;
     }
 
-    function register(params) {
+    function register(user) {
         var d = $q.defer();
 
         $http({
-            method: 'GET',
-            url: baseUrl + 'ads/',
-            params: params
+            method: 'POST',
+            url: baseUrl + 'user/register/',
+            data: user
         })
             .success(function (data, status, headers, config) {
                 d.resolve(data);
