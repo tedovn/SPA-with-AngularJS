@@ -9,19 +9,20 @@
     <title> {{page.title}} </title>
 </head>
 <body ng-app="softUniApp">
-<div class="navbar navbar-default">
+<div class="navbar">
     <div class="navbar-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <a href="#/" class="navbar-brand">Home</a>
+                    <p class="navbar-text"><a href="#/" class="navbar-brand">Home</a></p>
+
                 </div>
                 <div class="col-lg-5">
-                    <h1 class="navbar navbar-text centered"> {{page.title}} </h1>
+                    <h3> {{page.title}} </h3>
                 </div>
                 <div class="col-lg-3" ng-controller="LoginController">
-                    <div class="navbar navbar-text navbar-right" data-ng-if="userData.isLoggedUser()">
-                        <div class="navbar-text"> {{userData.getLoggedUser().username}}</div>
+                    <div class="navbar-text navbar-right" data-ng-if="userData.isLoggedUser()">
+                        <p class="navbar-text"> <strong>{{userData.getLoggedUser().username}} </strong></p>
                         <a href="" data-ng-click="logout()" class="navbar-brand">Logout</a>
                     </div>
                 </div>
@@ -33,6 +34,11 @@
 <div ng-view class="container">
 
 </div>
+<footer class="panel-footer">
+    <div  class="text-center">
+        <p>&copy; 2014 by Software Foundation, No Right Reserved</p>
+    </div>
+</footer>
 <script type="text/javascript" src="lib/angular/angular.js"></script>
 <script type="text/javascript" src="lib/angular/angular-route.js"></script>
 <script type="text/javascript" src="lib/angular/angular-resource.js"></script>
@@ -49,6 +55,7 @@
 <script type="text/javascript" src="js/controllers/UserEditAdController.js"></script>
 <script type="text/javascript" src="js/services/adsData.js"></script>
 <script type="text/javascript" src="js/services/authData.js"></script>
+<script type="text/javascript" src="js/services/userData.js"></script>
 <script type="text/javascript" src="js/filters/image-filter.js"></script>
 <script type="text/javascript" src="js/services/messaging.js"></script>
 <script type="text/javascript" src="lib/jquery-2.1.1.js"></script>
